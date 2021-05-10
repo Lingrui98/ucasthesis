@@ -277,8 +277,14 @@
         \def\maketitle{\maketitle@pdc}
         \def\MAKETITLE{\MAKETITLE@pdc}
     }{%
+    \ucasifstreq{\ucas@value@en@degree}{MasterToDoctor}{%
+        \def\ucas@label@ch@thesis{\ucas@label@ch@thesis@mastodoc}%
+        \def\ucas@label@ch@author{\ucas@label@ch@author@mastodoc}%
+        \def\ucas@label@ch@major{\ucas@label@ch@major@mastodoc}%
+        \def\maketitle{\maketitle@mtod}
+    }{%
         \ClassWarning{ucasthesis}{Invalid value of '\string\DEGREE', please check the spelling}%
-    }}}}%
+    }}}}}%
 }
 %-
 %-> Define Chinese style
@@ -401,6 +407,75 @@
     \if@twoside
       \thispagestyle{empty}
       \cleardoublepage[empty]
+    \fi
+    \ifucas@print%
+        \hypersetup{% set hyperlinks
+            hidelinks,% remove link color and border
+        }
+    \fi
+}
+\newcommand{\maketitle@mtod}{%
+    \cleardoublepage
+    \thispagestyle{empty}
+    \begin{center}
+        \linespread{1.6}
+        \zihao{-4}\bfseries
+
+        \vspace*{\stretch{5}}
+
+        
+        {\zihao{3}\bfseries\sffamily {\ucas@value@ch@institute}}
+
+        \zihao{-4}
+        \vspace*{\stretch{1}}
+
+        {\zihao{2}\bfseries\sffamily {\ucas@label@ch@thesis}}
+
+        \zihao{-4}
+        \vspace*{\stretch{4}}
+
+        {\zihao{3}\bfseries\sffamily \underline{\ucas@value@ch@title}}
+        
+        \zihao{4}
+        \vspace*{\stretch{1}}
+        
+        {\zihao{4}\itshape \underline{\ucas@value@ch@author}}
+
+        \vspace*{\stretch{12}}
+
+        \zihao{-4}
+        \def\tabcolsep{1pt}
+        \def\arraystretch{1}
+        \begin{tabular}{lc}
+            \ucas@label@ch@advisor & \ucaslntotab[1.2pt]{\ucas@value@ch@advisor}\\
+            \\
+            \ucas@label@ch@major & \ulenhance[1.2pt]{\ulextend{\ucas@value@ch@major}}\\
+            \\
+            \ucas@label@ch@submitdatethesis & \ucaslntotab[1.2pt]{\ucas@value@ch@submitdate}\\
+        \end{tabular}
+
+    \end{center}
+    \clearpage
+    \if@twoside
+        \thispagestyle{empty}
+        \ifucas@versioninfo
+            \vspace*{\stretch{1}}
+            \begin{footnotesize}
+                \noindent
+                Draft Version (\today)
+            \end{footnotesize}
+        \fi
+        \cleardoublepage[empty]
+    \else
+        \ifucas@versioninfo
+            \thispagestyle{empty}
+            \vspace*{\stretch{1}}
+            \begin{footnotesize}
+                \noindent
+                Draft Version (\today)
+            \end{footnotesize}
+            \cleardoublepage[empty]
+        \fi
     \fi
     \ifucas@print%
         \hypersetup{% set hyperlinks
