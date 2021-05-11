@@ -5,27 +5,25 @@
 %-> 生成封面
 %-
 \maketitle% 生成中文封面
-\MAKETITLE% 生成英文封面
+% \MAKETITLE% 生成英文封面
 %-
 %-> 作者声明
 %-
-\makedeclaration% 生成声明页
+% \makedeclaration% 生成声明页
 %-
 %-> 中文摘要
 %-
 \intobmk\chapter*{摘\quad 要}% 显示在书签但不显示在目录
 \setcounter{page}{1}% 开始页码
 \pagenumbering{Roman}% 页码符号
+摩尔定律的逐渐失效使得体系结构领域进入创新的黄金年代\cite{hennessy2019new}。基于RISC-V指令集架构的开源芯片设计是有前途的发展方向，所以一款高性能的开源RISC-V处理器核实现对于工业界和学术界都意义重大。分支预测部件是保证处理器指令供给的重要结构，现有的开源分支预测部件都没有同时达到高预测性能和高主频的要求。本文的工作实现了香山开源RISC-V高性能处理器核中的分支预测部件。它采用三级覆盖预测结构，在已有开源设计的基础上，实现了最大分支历史长度为64的TAGE-SC-L分支方向预测器\cite{seznec2014tage}；全局分支历史采用了一种新机制管理，避免了多级预测下因不同流水级分支历史不同而造成的自身冲刷；跳转目标地址采用256项MicroBTB和2048项BTB预测；返回地址的预测使用16项RAS。本实现在TSMC~28nm工艺下评估达到1.5GHz主频。
 
-本文是中国科学院大学学位论文模板ucasthesis的使用说明文档。主要内容为介绍\LaTeX{}文档类ucasthesis的用法，以及如何使用\LaTeX{}快速高效地撰写学位论文。
-
-\keywords{中国科学院大学，学位论文，\LaTeX{}模板}% 中文关键词
+\keywords{RISC-V，开源芯片设计，分支预测部件设计，全局分支历史}% 中文关键词
 %-
 %-> 英文摘要
 %-
 \intobmk\chapter*{Abstract}% 显示在书签但不显示在目录
+With the foreseeable end of Moore's Law, there comes a gloden age of innovation for computer architecture\cite{hennessy2019new}. Open-source chip design on RISC-V ISA is expected to have a promising future, so the implementation of an open-source high-performance RISC-V core is of great significance to the industry and academia. Branch prediction unit is an important structor to ensure sufficient supply of instruction to the execution core. None of the existing open-source branch prediction unit implementation meet the requirements of high prediction accuracy and high frequency at the same time. We implemented the branch prediction unit in XiangShan open-source RISC-V high performance processor, which adopted a three-level overriding structure. On the basis of existing open-source design, we implemented a TAGE-SC-L branch predictor\cite{seznec2014tage} with maximum history length of 64. We introduced a new method of global history management, preventing self flushes due to the inconsistency of global history value among different pipeline stages in an overriding structure. We used a 256-entry MicroBTB and a 2048-entry BTB to predict the target of control flow instructions, with a 16-entry RAS for retrun address prediction. This implementation achieved 1.5GHz under TSMC~28nm process. 
 
-This paper is a help documentation for the \LaTeX{} class ucasthesis, which is  a thesis template for the University of Chinese Academy of Sciences. The main content is about how to use the ucasthesis, as well as how to write thesis efficiently by using \LaTeX{}.
-
-\KEYWORDS{University of Chinese Academy of Sciences (UCAS), Thesis, \LaTeX{} Template}% 英文关键词
+\KEYWORDS{RISC-V, Open Source Chip Design, Branch Predictor Component Design, Global Branch History}% 英文关键词
 %---------------------------------------------------------------------------%

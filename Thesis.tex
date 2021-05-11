@@ -11,7 +11,7 @@
 %---------------------------------------------------------------------------%
 %->> Document class declaration
 %---------------------------------------------------------------------------%
-\documentclass[twoside]{Style/ucasthesis}%
+\documentclass[twoside,fontset=adobe]{Style/ucasthesis}%
 %- Multiple optional arguments:
 %- [<oneside|twoside|print>]% oneside eprint, twoside eprint, or paper print
 %- [fontset=<adobe|none|...>]% specify font set instead of automatic detection
@@ -21,7 +21,7 @@
 %---------------------------------------------------------------------------%
 %->> Document settings
 %---------------------------------------------------------------------------%
-\usepackage[authoryear,list]{Style/artratex}% document settings
+\usepackage[numbers,list]{Style/artratex}% document settings
 %- usage: \usepackage[option1,option2,...,optionN]{artratex}
 %- Multiple optional arguments:
 %- [bibtex|biber]% set bibliography processor and package
@@ -67,7 +67,7 @@
 \intobmk*{\cleardoublepage}{\listtablename}% add link to bookmark
 \listoftables% table catalog
 }
-\input{Tex/Prematter}% symbol list, preface content
+% \input{Tex/Prematter}% symbol list, preface content
 %-
 %-> Mainmatter
 %-
@@ -76,9 +76,9 @@
 %-
 %-> Appendix
 %-
-\cleardoublepage%
-\appendix% initialize the environment
-\input{Tex/Appendix}% appendix content
+% \cleardoublepage%
+% \appendix% initialize the environment
+% \input{Tex/Appendix}% appendix content
 %-
 %-> Backmatter: bibliography, glossary, index
 %-
